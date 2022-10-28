@@ -29,32 +29,28 @@ void DrawPieces(Game game, SDL_Renderer * render){
     string pieces[12] = {"blackKing", "blackQueen", "blackRook", "blackKnight", "blackBishop", "blackPawn",
                          "whiteKing", "whiteQueen", "whiteRook", "whiteKnight", "whiteBishop", "whitePawn"};
     //if your in the working directory you can just use ../ to go back a dir (This would be useful in a multifile project)
-    string basePath = "../Images/{ }.bmp";
-    
+    string base = "../Images/";
+    string middle = "";
+    string suffix = ".bmp";
+    string path;
     for(int i=0; i<8; i++){
         for(int j=0; j<8; j++){
             if(game.GetBoard()[i][j].Type() != "empty"){
                 Piece piece = game.GetBoard()[i][j];
                 
-                char basePathArr[69];
-                strcpy(basePathArr, basePath.c_str());
-                basePathArr[64] = piece.Colour()[0];
-                basePathArr[65] = piece.Type()[0];
-                basePathArr[66] = piece.Type()[1];
-                
+                middle.push_back(piece.Colour()[0]);
+                middle.push_back(piece.Type()[0]);
+                middle.push_back(piece.Type()[1]);
                 SDL_Rect dest;
                     dest.x = j*SQUARESIZE;
                     dest.y = i*SQUARESIZE;
                     dest.w = SQUARESIZE;
                     dest.h = SQUARESIZE;
 
+                path = base + middle + suffix;
 
-                for(auto i = 0; i < 69; i++){
-                    std::cout << basePathArr[i];
-                }
-                std::cout << std::endl;
-                SDL_Surface *pieceImage = SDL_LoadBMP("../Images/bBi.bmp");
-                
+                SDL_Surface *pieceImage = SDL_LoadBMP(path.c_str());
+                std::cout << path << std::endl;
                 SDL_Texture * texture = SDL_CreateTextureFromSurface(render, pieceImage);
                 if(SDL_RenderCopy(render, texture, NULL, &dest) < 0){
                     std::cout << SDL_GetError() << std::endl;
@@ -63,6 +59,8 @@ void DrawPieces(Game game, SDL_Renderer * render){
                // SDL_DestroyTexture(texture);
               //  SDL_FreeSurface(pieceImage);
             }
+            path = "";
+            middle = "";
         }
     }
 }
