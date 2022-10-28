@@ -89,15 +89,17 @@ int main(){
             if(event.type ==  SDL_QUIT){
                 running = false;
             }
-        }
-        // refresh screen
-        SDL_SetRenderDrawColor(render, 255, 252, 231, 255);
-        SDL_RenderClear(render);
 
-        //Put the things we want to draw here
-        DrawBoard(render);
-        DrawPieces(game, render);
-        SDL_RenderPresent(render);
+            // refresh screen
+            SDL_SetRenderDrawColor(render, 255, 252, 231, 255);
+            SDL_RenderClear(render);
+
+            //Put the things we want to draw here
+            DrawBoard(render);
+            DrawPieces(game, render);
+            SDL_RenderPresent(render);
+        }
+
     }
     SDL_DestroyWindow(window);
     SDL_DestroyRenderer(render);
