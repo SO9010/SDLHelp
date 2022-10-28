@@ -1,0 +1,7 @@
+[
+{
+  "directory": "/home/samio/Documents/andirudhanCodeHelp/SDLHelp/build",
+  "command": "/usr/bin/g++ -I/home/samio/Documents/andirudhanCodeHelp/SDLHelp/. -g -std=gnu++14 -o CMakeFiles/SDLHelp.dir/newMain.cpp.o -c /home/samio/Documents/andirudhanCodeHelp/SDLHelp/newMain.cpp",
+  "file": "/home/samio/Documents/andirudhanCodeHelp/SDLHelp/newMain.cpp"
+}
+]
